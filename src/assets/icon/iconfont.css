@@ -1,0 +1,33 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1592016742701'); /* IE9 */
+  src: url('iconfont.eot?t=1592016742701#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAQgAAsAAAAACLAAAAPSAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDKgqEPINwATYCJAMUCwwABCAFhG0HYRuNB8iOw8YxLWUUyZ2vePh+v/+tfeTJud8U9ajNp5MuVLOm0b10QiQF5le0BP4vN/uBaqCwKrNmNfFQTdNJmqJvGOxWPa2Y+Yn/uZ+vi+SB5LVnc8kK22hngOMBDbTDomiC8Uu/6BfRP4xdXMZuAs0m4zGn03NLwUehDQrELVniwSemU0qKw0gY5Mws4iN4GqVXikvAB/f98U9w+JDUTBt55kpaIyT+/PqWU7a4W6DaRgG/PwuYeWQcAApxI9d2idKPHaDUpEwPR4GRbkn0Fct8y7ndGJchWAu3VNbQP7wkK8SAJpuAiuNYU+wZ30QIfmUgJH5lImR+cYKbsk8FDXPANwBrCL9DkmUO9q2o1UVju+TN/f+yWm6XzV68aN1w9ZoNS5b2rlg/olTFdLp+re727bJbt0rv3Cm/e7fs1C20/Hba2bvDVtypADamTUUPnro4cfX8lnmr2DUbWjeGj7ardl/uy/lVqYf6TTzcp3LePlb9+kA/HVM+Z04vlunu86vXAzSdh4eGa9YcYZguWjzaOEpYK2tg+kpu2llQRV8PNXFOHPU0aumBKyk/XqAP6MWPlCti+bH/m87fbklsue2M+S8d1ykcDkbHcA6nDrCJmuFgucOhi31eWqLVmJLnLkmjLQf38sSyxA2JY/Wm37wfQ/YDzeR7A+5N0dQ/nvB4DkRGl9ZHQK8P3KYZcWNePP02qDYPXyu9f58Zvfunxw6H/k/GfJ4WnRgO/dZ6tnn7dy+I/R5r6x+ybey2kP42wV3Q3d8789CNPTLHho2dhPnvfMK37/R7zPUebdqx2nkJNd9rwEmL5iOKjzClV3Q4ziuexRUff4HfMfv1cFmdNva3j6qAH2y9iHRFe9575Nfmv3B+zYYiCzV9LWKtyRP91RGvdFhC0/AfuOY86UexWLuQMLIYQjK0EbKRHeiCPwBV5yAMjByDZr+M+Z15hFKUMfbpBBBmbIVkynfIZlxGF/xjqJZ8hoGZUELTR/cVO7tCZlMI5iluRA0uJAtmk2gYKesVF2PJZuBJVOhSyzGxykEU5B+YTGZgEyZ9jLHapWBKRSQSsxGlg/2wwWBGFmJuxgL1b6LUEh0QIObdyV8wG4F1CoHxKKwR0sAFkQnMTES7NcWmXl8Mk9gY8EhJXYm1HEZYyZ0jQfwF1kBnyEy16s7lGCs7STCKEiEiwswISQcWzKDHzBBLfrdmmIDy19QiYhEtADUT68r8x1cYr3EbNNpKNVLkKFFjYPKCzWqVTdjKmGDkTT7C3q8nmYmLFXhCJ6QZLdSlzTObsKugmpewEZsoAAAA') format('woff2'),
+  url('iconfont.woff?t=1592016742701') format('woff'),
+  url('iconfont.ttf?t=1592016742701') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1592016742701#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bussiness-man:before {
+  content: "\e6ef";
+}
+
+.icon-category:before {
+  content: "\e747";
+}
+
+.icon-cart-Empty:before {
+  content: "\e748";
+}
+
+.icon-Moneymanagement:before {
+  content: "\e759";
+}
+
