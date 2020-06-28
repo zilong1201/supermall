@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <keep-alive>
-      <main-tab-bar></main-tab-bar>
+      <main-tab-bar class='main-tab-bar'></main-tab-bar>
     </keep-alive>
     <router-view></router-view>
   </div>
@@ -26,5 +26,8 @@ export default {
 
   .is-active{
     background: red
+  }
+  .main-tab-bar{
+    z-index: 9
   }
 </style>
