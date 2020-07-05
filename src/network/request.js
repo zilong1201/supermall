@@ -9,7 +9,7 @@ export function request(config) {
 
   // 2.axios拦截器
   instance.interceptors.request.use(config => {
-    console.log(config)
+    // console.log(config)
     // 1.比如config中的一些信息不符服务器的要求
     // 2.比如每次发送请求时，都希望在界面中显示请求图标
     // 3.某些网络请求，必须携带一些特殊的信息（比如登录）
@@ -22,7 +22,7 @@ export function request(config) {
 
   // 拦截响应
   instance.interceptors.response.use(res => {
-    console.log(res.data)
+    // console.log(res.data)
     return res.data
   }, err => {
     console.log(err)

@@ -53,7 +53,7 @@ export default {
     color: var(--color-high-text);
   }
   .active span{
-    padding: 5px 17px;
+    padding: 2px 17px;
     border-bottom: 3px solid var(--color-high-text);
   }
 </style>

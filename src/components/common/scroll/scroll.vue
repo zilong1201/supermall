@@ -37,17 +37,33 @@
 
       // 监听滚动的位置
       this.scroll.on('scroll', (position) => {
-        this.$emit('contentScroll',position)
+        this.$emit('contentScroll', position)
       })
 
-      // 监听上拉事件
+      // 监听上拉加载更多事件
       this.scroll.on('pullingUp', () => {
-        console.log('上拉加载更多')
+        this.$emit('pullingUp')
       })
     },
     methods: {
+      // 封装滚动的方法
       scrollTo(x, y, time = 300){
-        this.scroll.scrollTo(x, y, time)
+        this.scroll && this.scroll.scrollTo(x, y, time)
+      },
+
+      // 封装上拉加载的方法
+      finishPullUp() {
+        this.scroll && this.scroll.finishPullUp()
+      },
+
+      // 封装刷新的方法
+      refresh() {
+        this.scroll && this.scroll.refresh()
+      },
+
+      // 封装获取滚动时坐标的方法
+      getScrollY() {
+        return this.scroll ? this.scroll.y : 0
       }
     }
   };
