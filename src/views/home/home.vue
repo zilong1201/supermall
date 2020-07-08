@@ -33,7 +33,7 @@ import NavBar from 'components/common/navbar/NavBar'
 import TabControl from 'components/content/tabControl/TabControl'
 import GoodsList from 'components/content/goods/GoodsList'
 import scroll from 'components/common/scroll/scroll'
-import BackTop from 'components/content/backTop/BackTop'
+// import BackTop from 'components/content/backTop/BackTop'
 // 子组件
 import HomeSwiper from './childComps/HomeSwiper'
 import HomeRecommend from './childComps/HomeRecommend'
@@ -41,7 +41,7 @@ import HomeRecommend from './childComps/HomeRecommend'
 import {getHomeMultidata, getHomeGoods} from 'network/home'
 // import {debounce} from 'common/utils'    //防抖函数
 // import {Swiper,SwiperItem} from 'components/common/swiper'
-import {itemImgListenerMixin} from 'common/mixin'  // 混入
+import {itemImgListenerMixin, backTopMixin} from 'common/mixin'  // 混入
 
 export default {
   name: 'Home',
@@ -50,7 +50,7 @@ export default {
     TabControl,
     GoodsList,
     scroll,
-    BackTop,
+
     HomeSwiper,
     HomeRecommend
   },
@@ -64,7 +64,7 @@ export default {
         "sell": {page:0, list:[]}
       },
       currentType: 'pop',
-      isShowBackTop: false,
+
       tabOffsetTop: 0,
       isTabFixed: false,
       saveY: 0
@@ -77,7 +77,7 @@ export default {
     this.getHomeGoods('new')
     this.getHomeGoods('sell')
   },
-  mixins: [itemImgListenerMixin],
+  mixins: [itemImgListenerMixin, backTopMixin],
   methods: {
     // 网络请求的方法
     getHomeMultidata() {
@@ -135,9 +135,9 @@ export default {
     },
 
 
-    backClick() {
-      this.$refs.scroll.scrollTo(0,0)
-    },
+    // backClick() {
+    //   this.$refs.scroll.scrollTo(0,0)
+    // },
 
     // 防抖函数
     // debounce(func, delay) {

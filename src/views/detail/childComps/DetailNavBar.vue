@@ -40,9 +40,7 @@
       backClick() {
         this.$router.back()
       }
-    },
-    created() {},
-    mounted() {}
+    }
   };
 </script>
 <style  scoped>

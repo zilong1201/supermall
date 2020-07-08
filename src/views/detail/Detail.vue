@@ -9,14 +9,21 @@
       <detail-param-info :param-info='paramInfo' ref='params'/>
       <detail-comment-info :comment-info='commentInfo' ref='comments'/>
       <goods-list :goods='recommends' ref='recommends'/>
+
+      <div>{{$store.state.cartList.length}}</div>
     </scroll>
-    <detail-bottom-bar />
+    <detail-bottom-bar @addCart='addToCart'/>
+    <back-top @click.native='backClick' v-show='isShowBackTop'/>
+
+    <!-- <toast :message='message' :show='show'/> -->
   </div>
 </template>
 
 <script>
   import scroll from 'components/common/scroll/scroll'
+  // import Toast from 'components/common/toast/Toast'
   import GoodsList from 'components/content/goods/GoodsList'
+  import BackTop from 'components/content/backTop/BackTop'
 
   import DetailNavBar from './childComps/DetailNavBar'
   import DetailSwiper from './childComps/DetailSwiper'
@@ -29,13 +36,16 @@
 
   import {getDetail,getRecommend ,Goods, Shop, GoodsParam} from 'network/detail'
   import {debounce} from 'common/utils'    //防抖函数
-  import {itemImgListenerMixin} from 'common/mixin'  // 混入
+  import {itemImgListenerMixin, backTopMixin} from 'common/mixin'  // 混入
+  import { mapActions } from 'vuex'  // 映射actions
 
   export default {
     name: 'Detail',
     components: {
       scroll,
+      // Toast,
       GoodsList,
+      BackTop,
       DetailNavBar,
       DetailSwiper,
       DetailBaseInfo,
@@ -46,7 +56,7 @@
       DetailBottomBar
     },
     props: {},
-    mixins: [itemImgListenerMixin],
+    mixins: [itemImgListenerMixin, backTopMixin],
     data() {
       return {
         iid: null,
@@ -60,7 +70,9 @@
         itemImgListener: null,
         themeTopYs: [],
         getThemeTopY: null,
-        currentIndex: 0
+        currentIndex: 0,
+        // message: '',
+        // show: false
       };
     },
     created() {
@@ -78,6 +90,7 @@
 
         // 获取商品信息
         this.goods = new Goods(data.itemInfo, data.columns, data.shopInfo.services)
+        // console.log(data.itemInfo)
 
         // 获取商家信息
         this.shop = new Shop(data.shopInfo)
@@ -113,6 +126,8 @@
       })
     },
     methods: {
+      ...mapActions(['addCart']),
+
       imageLoad() {
         this.$refs.scroll.refresh()
         // 获取各区域的高度
@@ -134,17 +149,55 @@
           i = i*1  // 字符串变数字
           if(this.currentIndex !== i && (positionY >= this.themeTopYs[i] && positionY < this.themeTopYs[i+1])){
             this.currentIndex = i
-            console.log(this.currentIndex)
+            // console.log(this.currentIndex)
             this.$refs.nav.currentIndex = this.currentIndex
           }
         }
-      }
+
+        // 判断backtop是否显示
+        this.isShowBackTop = -position.y > 1000
+      },
+
+      // 底部栏传递事件
+      addToCart() {
+        // console.log('ok1111');
+        // 获取商品信息
+        const product = {}
+        product.image = this.topImages[0]
+        product.title = this.goods.title
+        product.desc = this.goods.desc
+        product.iid = this.iid
+        product.price = this.goods.realPrice
+        // 将商品添加到购物车
+        // this.$store.commit('addCart', product)
+        // this.$store.dispatch('addCart', product).then(res => {
+        //   this.message = res
+        //   this.show = true
+        //   setTimeout(() => {
+        //     this.show =false
+        //     this.message = ''
+        //   },1500)
+        // })
+
+        this.addCart(product).then(res => {
+          // this.message = res
+          // this.show = true
+
+          // setTimeout(() => {
+          //   this.show = false
+          //   this.message = ''
+          // },1500)
+          this.$toast.show(res)
+          // console.log(this.$toast)
+        })
+      },
     },
     // mounted() {
     //   this.itemImgListener = () => debounce(this.$refs.scroll.refresh,500)
     //   // 监听全局事件
     //   this.$bus.$on('itemImgLoad', this.itemImgListener)
     // },
+
     destroyed() {
       // 取消全局事件的监听
       this.$bus.$off('itemImgLoad', this.itemImgListener)
